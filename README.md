@@ -12,11 +12,13 @@ El proyecto contiene:
  -esta ventanita se puede cerrar
  -está programado con Javascript, en la funcion "login"
 
+
  SECCION FILTER:
  -filtro para elegir el modelo ---> lista de <select> <optiobn>
  -filtro de precios 
  -si con los filtros no hay productos: hay productos sugeridos
  -el botón "Limpiar filtros" limpia todos los filtros 
+
 
 
  SECCION PRODUCTS:
