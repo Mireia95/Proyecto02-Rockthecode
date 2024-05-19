@@ -412,6 +412,7 @@ main {
     overflow: hidden;
     background-color: var(--WR-color-01);
     transition: width 0.5s;
+    z-index: 1;
   }
 
   ul.flex {
