@@ -21,9 +21,9 @@
           <li><a href=""> SOSTENIBILIDAD </a></li>
         </ul>
       </nav>
-      <button>
+      <button class="menu">
         <img
-          src="https://res.cloudinary.com/dr2vohk2z/image/upload/v1709742875/ROCKTHECODE/iconos/menu_vax2bk.png"
+          src="https://res.cloudinary.com/dr2vohk2z/image/upload/v1715778915/ROCKTHECODE/iconos/menu_icon_mrhfb0.png"
           alt="menu"
         />
       </button>
@@ -33,11 +33,12 @@
           <img src="./assets/lupa.png" alt="lupa" />
           <input type="text" placeholder="Buscar aqui..." />
         </div>
-        <a
-          ><img
+        <button class="openLogin">
+          <img
             src="https://res.cloudinary.com/dr2vohk2z/image/upload/v1714418630/ROCKTHECODE/iconos/login_in0wpv.png"
             alt="login"
-        /></a>
+          />
+        </button>
         <a>
           <img
             src="https://res.cloudinary.com/dr2vohk2z/image/upload/v1714418687/ROCKTHECODE/iconos/cart_s3jh78.png"
@@ -46,10 +47,28 @@
       </div>
     </header>
     <main>
+      <section id="login" class="flex closed">
+        <button class="logInClosed">
+          <img
+            src="https://res.cloudinary.com/dr2vohk2z/image/upload/v1716136655/ROCKTHECODE/iconos/x-closed_cjkzrd.png"
+            alt="cerrar"
+          />
+        </button>
+        <h3>Login</h3>
+        <form id="form-login" class="flex">
+          <div class="flex">
+            <label>email</label>
+            <input placeholder="ejemplo@ejemplo.com" id="email" />
+          </div>
+          <div class="flex">
+            <label>password</label>
+            <input placeholder="*******" type="password" id="contraseña" />
+          </div>
+          <button type="button" class="login-button">Login</button>
+        </form>
+      </section>
       <section id="filter"></section>
       <section id="products"></section>
-      <!-- seccion para galeria de imagenes -->
-      <section id="gallery"></section>
     </main>
     <footer class="flex flex-footer">
       <div class="subscribe">

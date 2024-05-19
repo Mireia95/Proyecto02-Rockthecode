@@ -1,6 +1,6 @@
 import './style.css';
 
-//!array de objetos
+//array de objetos
 const products = [
   {
     id: 1,
@@ -105,11 +105,10 @@ const products = [
 ];
 
 /* DOM */
+//variables globales
 const productSection = document.querySelector('#products');
 const filterSection = document.querySelector('#filter');
 const articleSection = document.createElement('div');
-
-/* VARIABLES GLOBALES*/
 const arraySeller = []; /* filtro seller */
 let seller; /* variable para guardar evento select seller */
 let selectSeller;
@@ -161,12 +160,10 @@ const printRandomProducts = (products) => {
 };
 
 /* FILTROS */
-
 /* funcion para maquetar seccion filtros */
 const getFilterStyle = () => {
   const filterTitle = document.createElement('h3');
   filterTitle.innerText = 'FILTROS';
-  filterTitle.classList.add('filterTitle');
   filterSection.appendChild(filterTitle);
 };
 
@@ -305,8 +302,45 @@ const printProductNotFound = () => {
   printRandomProducts(products);
 };
 
-//richiamo funzione
+//!funcion para login
+const login = () => {
+  //read buttons del login
+  const loginOpen = document.querySelector('.openLogin');
+  const loginClosed = document.querySelector('.logInClosed');
+  const login = document.querySelector('button.login-button');
+  const loginSection = document.querySelector('#login');
+
+  loginOpen.addEventListener('click', () => {
+    loginSection.classList.remove('closed');
+    console.log('apri logiiiin');
+  });
+  login.addEventListener('click', () => {
+    closeSection(loginSection);
+  });
+  loginClosed.addEventListener('click', () => {
+    closeSection(loginSection);
+  });
+};
+
+//funcion para esconder elementos
+const closeSection = (element) => {
+  element.classList.toggle('closed');
+  console.log('cierra el login!!!');
+};
+
+//funcion para menu nav desplegable con mediaquery
+const expandedNav = () => {
+  const nav = document.querySelector('nav');
+  const buttonMenu = document.querySelector('button.menu');
+  buttonMenu.addEventListener('click', () => {
+    nav.classList.toggle('expand-menu');
+  });
+};
+
+//llamo funciones
 getFilterStyle();
 fillSellers(products);
 createFilterSelectSeller(arraySeller);
 createFilterPrice();
+login();
+expandedNav(); //funcion per menu desplegable

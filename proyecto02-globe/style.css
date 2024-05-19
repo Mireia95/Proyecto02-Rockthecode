@@ -24,7 +24,8 @@
   /* MARGINS */
   --WR-margin-10: 10px;
   --WR-margin-20: 20px;
-  --WR-margin-40: 30px;
+  --WR-margin-30: 30px;
+  --WR-margin-40: 40px;
   --WR-margin-50: 50px;
 
   /* PADDINGS */
@@ -40,6 +41,10 @@
   --WR-gap-30: 30px;
   --WR-gap-40: 40px;
   --WR-gap-50: 50px;
+
+  /* heaer height */
+  --WR-header-height-01: 100px;
+  --WR-header-height-02: 80px;
 }
 
 * {
@@ -74,37 +79,51 @@ h4 {
 
 /* HEADER */
 header {
-  height: 100px;
+  height: var(--WR-header-height-01);
   border: 1px solid var(--WR-color-04);
+  padding: 10px;
+}
+
+/* clase para desplegar el menu en movil */
+.expand-menu {
+  width: 180px;
+  height: 220px;
+  border-right: 2px solid var(--WR-color-04);
+  transition: width 0.5s;
 }
 
 .nav {
   gap: var(--WR-gap-30);
-}
-
-.nav > li > a {
-  transition: border-bottom 0.3s ease-in-out;
+  transition: width 0.5s;
 }
 
 .nav > li > a:hover {
-  border-bottom: 1px solid var(--WR-color-03);
+  border-bottom: 2px solid var(--WR-color-03);
 }
 
 header > img {
   width: 100px;
 }
 
-header > button {
+.menu {
   display: none;
 }
 
 .header-icons {
-  width: 25%;
   margin: 0 var(--WR-margin-10);
 }
 
-.header-icons > a > img {
+header > div.flex {
+  gap: 10px;
+}
+
+.header-icons > a > img,
+.header-icons > button > img {
   width: 30px;
+}
+
+.header-icons > button {
+  background-color: var(--WR-color-01);
 }
 
 .header-input > img {
@@ -121,6 +140,66 @@ header > button {
 main {
   min-height: 100svh;
   display: flex;
+  position: relative;
+}
+
+/* SECTION LOGIN */
+#login {
+  flex-direction: column;
+  width: 400px;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* centro el elemento, como si su punto de orgien fuera al centro */
+  background-color: var(--WR-color-01);
+  border-radius: 20px;
+  box-shadow: 0px 0px 25px -4px grey;
+  padding: var(--WR-padding-30);
+}
+
+#login > button:first-child {
+  background-color: var(--WR-color-01);
+  padding: 0;
+  margin: 0;
+  position: relative;
+  left: 45%;
+}
+
+#login > button:first-child > img {
+  height: 15px;
+}
+
+#login > h3 {
+  text-align: center;
+  margin-bottom: var(--WR-margin-10);
+}
+
+#form-login {
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+}
+
+#form-login > div {
+  width: 100%;
+  gap: 20px;
+  justify-content: center;
+}
+
+#form-login > div input,
+#form-login > div select {
+  border: 2px solid var(--WR-color-04);
+  border-radius: 10px;
+  padding: var(--WR-padding-10);
+  text-align: center;
+}
+
+/* cerrar el login */
+.closed {
+  display: none;
 }
 
 /* SECTION FILTER */
@@ -175,15 +254,17 @@ main {
   opacity: 1;
 }
 
-.buttonFilter {
+.buttonFilter,
+.login-button {
   padding: var(--WR-padding-10) var(--WR-padding-40);
-  border-radius: 15px;
   margin: var(--WR-margin-10) auto var(--WR-margin-10);
   background-color: var(--WR-color-05);
   color: var(--WR-text-color-02);
+  border-radius: 15px;
 }
 
-.buttonFilter:hover {
+.buttonFilter:hover,
+.login-button:hover {
   background-color: var(--WR-color-03);
 }
 
@@ -202,6 +283,9 @@ main {
 
 #products > h4 {
   margin-bottom: var(--WR-margin-50);
+  background-color: var(--WR-color-03);
+  color: var(--WR-color-01);
+  padding: var(--WR-padding-10);
 }
 
 .products {
@@ -250,6 +334,7 @@ main {
   align-items: flex-start;
   padding: var(--WR-padding-40) 0 var(--WR-padding-20) 0;
   margin: var(--WR-margin-50);
+  margin-bottom: var(--WR-margin-30);
   border-top: 1px solid var(--WR-color-04);
 }
 
@@ -272,7 +357,8 @@ main {
 }
 
 .send-email > button > img {
-  width: 30px;
+  width: 24px;
+  display: block;
 }
 
 .social > div > a > img {
@@ -284,13 +370,72 @@ main {
 }
 
 /* MEDIA QUERY */
+
+@media (max-width: 1000px) {
+  #login {
+    top: 5%;
+  }
+  #filter {
+    width: 100%;
+    margin-right: var(--WR-margin-20);
+    padding: var(--WR-padding-10);
+  }
+  #products {
+    margin-left: var(--WR-padding-20);
+    padding: var(--WR-padding-10);
+  }
+
+  .nav {
+    gap: var(--WR-gap-10);
+  }
+}
+
 @media (max-width: 800px) {
   header.flex {
     justify-content: space-evenly;
   }
 
+  header {
+    height: var(--WR-header-height-02);
+    width: 100%;
+    padding: 20px;
+  }
+
+  nav {
+    position: absolute;
+    top: var(--WR-header-height-02);
+    left: 0;
+    height: 220px;
+    margin: 0;
+    font-size: 13px;
+    width: 0;
+    overflow: hidden;
+    background-color: var(--WR-color-01);
+    transition: width 0.5s;
+  }
+
+  ul.flex {
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+
+  nav > ul {
+    padding-left: 20px;
+    height: 100%;
+  }
+
+  .menu {
+    display: inline-block;
+    background-color: var(--WR-color-01);
+    padding: var(--WR-padding-10);
+  }
+
+  .menu > img {
+    display: block;
+  }
+
   .header-icons {
-    width: 30px;
     margin: 0 var(--WR-margin-10);
   }
 
@@ -305,6 +450,17 @@ main {
     flex-direction: column;
     align-items: center;
   }
+
+  #login {
+    top: 5%;
+    width: 350px;
+    padding: var(--WR-padding-10);
+  }
+
+  #login > button:first-child {
+    top: 10px;
+  }
+
   #filter {
     width: 100%;
     height: 330px;
@@ -318,16 +474,6 @@ main {
     padding: var(--WR-padding-20);
     width: 100%;
   }
-
-  nav {
-    display: none;
-  }
-
-  header > button {
-    display: inline-block;
-  }
-
-  /*! FOOTER */
 
   footer {
     flex-direction: column;
@@ -353,5 +499,60 @@ main {
 
   .social {
     margin-top: var(--WR-margin-20);
+  }
+}
+
+@media (max-width: 450px) {
+  header {
+    padding: var(--WR-padding-10);
+  }
+  .header-input > input {
+    font-size: 10px;
+    width: 80px;
+  }
+
+  .header-input > img {
+    width: 15px;
+  }
+
+  #login {
+    width: 90%;
+  }
+
+  #filter {
+    height: 300px;
+  }
+
+  #filter > h3 {
+    font-size: 15px;
+  }
+
+  .filterDiv > select {
+    font-size: 12px;
+    padding: var(--WR-padding-05) var(--WR-padding-10);
+  }
+  .flex-footer {
+    margin: var(--WR-margin-20);
+  }
+
+  h4 {
+    font-size: 10px;
+  }
+
+  .filterDiv > h4,
+  label,
+  #products > h4 {
+    font-size: 13px;
+  }
+
+  .buttonFilter {
+    padding: var(--WR-padding-10) var(--WR-padding-20);
+    margin: var(--WR-margin-10) auto var(--WR-margin-10);
+    font-size: 12px;
+  }
+
+  #products > h3 {
+    font-size: 20px;
+    margin-bottom: var(--WR-margin-50);
   }
 }
