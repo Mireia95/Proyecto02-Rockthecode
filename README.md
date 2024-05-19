@@ -14,7 +14,7 @@ El proyecto contiene:
 
 
  SECCION FILTER:
- -filtro para elegir el modelo ---> lista de <select> <optiobn>
+ -filtro para elegir el modelo, lista de <select> <optiobn>
  -filtro de precios 
  -si con los filtros no hay productos: hay productos sugeridos
  -el botón "Limpiar filtros" limpia todos los filtros     
