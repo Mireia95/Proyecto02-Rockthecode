@@ -10,19 +10,19 @@ El proyecto contiene:
  SECCION LOGIN: 
  -al hacer click en el icono de login en el header, aparece una ventanita para hacer el login
  -esta ventanita se puede cerrar
- -está programado con Javascript, en la funcion "login"
+ -está programado con Javascript, en la funcion "login"     
 
 
  SECCION FILTER:
  -filtro para elegir el modelo ---> lista de <select> <optiobn>
  -filtro de precios 
  -si con los filtros no hay productos: hay productos sugeridos
- -el botón "Limpiar filtros" limpia todos los filtros 
+ -el botón "Limpiar filtros" limpia todos los filtros     
 
 
 
  SECCION PRODUCTS:
- -gracias a Javascript podemos imprimir en la página todos los productos dell'array de objetos creado
+ -gracias a Javascript podemos imprimir en la página todos los productos dell'array de objetos creado     
 
 
 MEDIA QUERY
