@@ -183,6 +183,10 @@ const createHeader = (navList) => {
   }
   nav.appendChild(ulNav);
 
+  const imgLogo = document.createElement('img');
+  imgLogo.src = './assets/WAVERIDE.png';
+  imgLogo.alt = 'logo waveride';
+
   //creo button para menu desplegable en pantalla móvil
   const buttonMenu = document.createElement('button');
   const imgButtonMenu = document.createElement('img');
@@ -226,8 +230,9 @@ const createHeader = (navList) => {
 
   //inserto el todo dentro la seccion header
   header.appendChild(nav);
-  header.appendChild(buttonMenu);
   header.appendChild(imgLogo);
+  header.appendChild(buttonMenu);
+
   header.appendChild(divIcons);
 
   //añado clases
