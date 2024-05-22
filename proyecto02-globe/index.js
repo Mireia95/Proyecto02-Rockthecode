@@ -230,9 +230,8 @@ const createHeader = (navList) => {
 
   //inserto el todo dentro la seccion header
   header.appendChild(nav);
-  header.appendChild(imgLogo);
   header.appendChild(buttonMenu);
-
+  header.appendChild(imgLogo);
   header.appendChild(divIcons);
 
   //añado clases
