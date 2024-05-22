@@ -104,16 +104,251 @@ const products = [
   }
 ];
 
+//array con lista para nav
+const navList = ['INICIO', 'TABLAS', 'ROPA', 'SOSTENIBILIDAD'];
+
+//array con listas para footer
+const footerTienda = ['Zapatos', 'Ropa', 'skateboards', 'Calcetines'];
+const footerAcercaDe = [
+  'Skaetboarding',
+  'Sostenibiulidad',
+  'Equipo',
+  'Tiendas',
+  'Distribuidores'
+];
+const footerAtCliente = [
+  'Soporte',
+  'Ponte en contacto',
+  'Envios',
+  'Devolución',
+  'Politica de reembolso'
+];
+const socials = [
+  {
+    name: 'facebook',
+    link: 'https://www.facebook.com/globebrand',
+    image:
+      'https://res.cloudinary.com/dr2vohk2z/image/upload/v1714596621/ROCKTHECODE/iconos/facebook-black_eroepa.png'
+  },
+  {
+    name: 'instagram',
+    link: 'https://www.instagram.com/globebrand/',
+    image:
+      'https://res.cloudinary.com/dr2vohk2z/image/upload/v1714596621/ROCKTHECODE/iconos/instagram-black_rmbuds.png'
+  },
+  {
+    name: 'youtube',
+    link: 'https://www.youtube.com/globebrand',
+    image:
+      'https://res.cloudinary.com/dr2vohk2z/image/upload/v1714596621/ROCKTHECODE/iconos/youtubeblack_clptwa.png'
+  },
+  {
+    name: 'vimeo',
+    link: 'https://vimeo.com/globebrand',
+    image:
+      'https://res.cloudinary.com/dr2vohk2z/image/upload/v1714596622/ROCKTHECODE/iconos/vimeo-black_n8ibxq.png'
+  }
+];
+
 /* DOM */
 //variables globales
 const productSection = document.querySelector('#products');
 const filterSection = document.querySelector('#filter');
+const main = document.querySelector('main');
 const articleSection = document.createElement('div');
 const arraySeller = []; /* filtro seller */
 let seller; /* variable para guardar evento select seller */
 let selectSeller;
 let price; /* variable para guardar el precio del filtro elejido por el user */
 
+//creo logo pagina web
+const imgLogo = document.createElement('img');
+imgLogo.src = './assets/WAVERIDE.png';
+imgLogo.alt = 'logo waveride';
+
+//*HEADER
+//funcion para crear el header
+const createHeader = (navList) => {
+  const header = document.querySelector('#header');
+  //creo nav
+  const nav = document.createElement('nav');
+  const ulNav = document.createElement('ul');
+  for (const list of navList) {
+    const aNav = document.createElement('a');
+    aNav.innerText = list;
+    aNav.href = '';
+    const liNav = document.createElement('li');
+    liNav.appendChild(aNav);
+    ulNav.appendChild(liNav);
+  }
+  nav.appendChild(ulNav);
+
+  //creo button para menu desplegable en pantalla móvil
+  const buttonMenu = document.createElement('button');
+  const imgButtonMenu = document.createElement('img');
+  imgButtonMenu.src =
+    'https://res.cloudinary.com/dr2vohk2z/image/upload/v1715778915/ROCKTHECODE/iconos/menu_icon_mrhfb0.png';
+  imgButtonMenu.alt = 'menu';
+  buttonMenu.appendChild(imgButtonMenu);
+  buttonMenu.classList.add('menu');
+
+  //creo div de iconos e input con sus elementos
+  const divIcons = document.createElement('div');
+  const divInput = document.createElement('div');
+  const imgLupa = document.createElement('img');
+  imgLupa.src = './assets/lupa.png';
+  imgLupa.alt = 'lupa';
+  const inputBuscar = document.createElement('input');
+  inputBuscar.type = 'text';
+  inputBuscar.placeholder = 'Buscar aqui...';
+  divInput.appendChild(imgLupa);
+  divInput.appendChild(inputBuscar);
+
+  //boton login
+  const loginOpen = document.createElement('button');
+  const imgLoginOpen = document.createElement('img');
+  imgLoginOpen.src =
+    'https://res.cloudinary.com/dr2vohk2z/image/upload/v1714418630/ROCKTHECODE/iconos/login_in0wpv.png';
+  imgLoginOpen.alt = 'login';
+  loginOpen.appendChild(imgLoginOpen);
+
+  //link carrito
+  const carrito = document.createElement('a');
+  const imgCarrito = document.createElement('img');
+  imgCarrito.src =
+    'https://res.cloudinary.com/dr2vohk2z/image/upload/v1714418687/ROCKTHECODE/iconos/cart_s3jh78.png';
+  imgCarrito.alt = 'carrito';
+  carrito.appendChild(imgCarrito);
+
+  divIcons.appendChild(divInput);
+  divIcons.appendChild(loginOpen);
+  divIcons.appendChild(carrito);
+
+  //inserto el todo dentro la seccion header
+  header.appendChild(nav);
+  header.appendChild(buttonMenu);
+  header.appendChild(imgLogo);
+  header.appendChild(divIcons);
+
+  //añado clases
+  header.classList.add('flex');
+  ulNav.classList.add('flex');
+  ulNav.classList.add('nav');
+  buttonMenu.classList.add('menu');
+  divIcons.classList.add('flex');
+  divIcons.classList.add('header-icons');
+  divInput.classList.add('flex');
+  divInput.classList.add('header-input');
+  loginOpen.classList.add('openLogin');
+};
+
+createHeader(navList);
+
+//*FOOTER
+//funcion para crear listas para footer
+const createFooterList = (elements, ul) => {
+  for (const element of elements) {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.innerText = element;
+    a.href = '';
+    li.appendChild(a);
+    ul.appendChild(li);
+  }
+};
+
+//funcion para crear el footer
+const createFooter = () => {
+  const footer = document.querySelector('#footer');
+  const divSubscribe = document.createElement('div');
+  const divTienda = document.createElement('div');
+  const divAcercaDe = document.createElement('div');
+  const divAtCliente = document.createElement('div');
+  const divSocial = document.createElement('div');
+
+  //subscribe
+  const h4Subscribe = document.createElement('h4');
+  const pSubscribe = document.createElement('p');
+  h4Subscribe.innerText = 'SUBSCRÍBASE';
+  pSubscribe.innerText =
+    'Suscríbase a nuestro boletín de noticias para estar al día de nuestras novedades, reposiciones y mucho más.';
+  const divSendEmail = document.createElement('div');
+  const inputEmail = document.createElement('input');
+  inputEmail.type = 'email';
+  inputEmail.placeholder = 'Envíe un correo electrónico';
+  const submit = document.createElement('button');
+  submit.type = 'submit';
+  const imgSubmit = document.createElement('img');
+  imgSubmit.src = './assets/arrow_right.JPG';
+  imgSubmit.alt = 'envio-mail';
+  submit.appendChild(imgSubmit);
+  divSendEmail.appendChild(inputEmail);
+  divSendEmail.appendChild(submit);
+  divSubscribe.appendChild(h4Subscribe);
+  divSubscribe.appendChild(pSubscribe);
+  divSubscribe.appendChild(divSendEmail);
+
+  //Tienda
+  const h4Tienda = document.createElement('h4');
+  h4Tienda.innerText = 'TIENDA';
+  const ulTienda = document.createElement('ul');
+  createFooterList(footerTienda, ulTienda);
+
+  divTienda.appendChild(h4Tienda);
+  divTienda.appendChild(ulTienda);
+
+  //AcercaDE
+  const h4AcercaDe = document.createElement('h4');
+  h4AcercaDe.innerText = 'ACERCA DE';
+  const ulAcercaDe = document.createElement('ul');
+  createFooterList(footerAcercaDe, ulAcercaDe);
+
+  divAcercaDe.appendChild(h4AcercaDe);
+  divAcercaDe.appendChild(ulAcercaDe);
+
+  //Atencion al cliente
+  const h4AtCliente = document.createElement('h4');
+  h4AtCliente.innerText = 'ATENCIÓN AL CLIENTE';
+  const ulAtCliente = document.createElement('ul');
+  createFooterList(footerAtCliente, ulAtCliente);
+
+  divAtCliente.appendChild(h4AtCliente);
+  divAtCliente.appendChild(ulAtCliente);
+
+  //parte social
+  const divIcons = document.createElement('div');
+  for (const social of socials) {
+    const aSocial = document.createElement('a');
+    const imgSocial = document.createElement('img');
+    imgSocial.src = social.image;
+    imgSocial.alt = social.name;
+    aSocial.href = social.link;
+    aSocial.appendChild(imgSocial);
+    divIcons.appendChild(aSocial);
+  }
+
+  divSocial.appendChild(imgLogo);
+  divSocial.appendChild(divIcons);
+
+  //pinto en el #footer
+  footer.appendChild(divSubscribe);
+  footer.appendChild(divTienda);
+  footer.appendChild(divAcercaDe);
+  footer.appendChild(divAtCliente);
+  footer.appendChild(divSocial);
+
+  //add classes
+  footer.classList.add('flex');
+  footer.classList.add('flex-footer');
+  divSubscribe.classList.add('subscribe');
+  divSendEmail.classList.add('send-email');
+  divSocial.classList.add('social');
+  divIcons.classList.add('flex');
+};
+
+createFooter();
+
+//*MAIN
 //funcion para pintar mis productos
 const printProducts = (products) => {
   articleSection.innerHTML = '';
@@ -302,30 +537,84 @@ const printProductNotFound = () => {
   printRandomProducts(products);
 };
 
-//!funcion para login
+//funcion para login
 const login = () => {
-  //read buttons del login
+  //read / create login
+  const loginSection = document.createElement('section');
+  loginSection.id = 'login';
+  main.appendChild(loginSection);
+  // creo section login
   const loginOpen = document.querySelector('.openLogin');
-  const loginClosed = document.querySelector('.logInClosed');
-  const login = document.querySelector('button.login-button');
-  const loginSection = document.querySelector('#login');
+  const loginClosed = document.createElement('button'); //bottone per closed login
+  const imgLoginClosed = document.createElement('img');
+  imgLoginClosed.src =
+    'https://res.cloudinary.com/dr2vohk2z/image/upload/v1716136655/ROCKTHECODE/iconos/x-closed_cjkzrd.png';
+  imgLoginClosed.alt = 'close';
+  const h3Login = document.createElement('h3');
+  h3Login.innerText = 'Login';
+  const formLogin = document.createElement('form');
+  formLogin.id = 'form-login';
+  const divEmail = document.createElement('div');
+  const labelEmail = document.createElement('label');
+  labelEmail.innerText = 'email';
+  const inputEmail = document.createElement('input');
+  inputEmail.placeholder = 'ejemplo@ejemplo.com';
+  inputEmail.id = 'email';
+  const divPassword = document.createElement('div');
+  const labelPassword = document.createElement('label');
+  labelPassword.innerText = 'password';
+  const inputPassword = document.createElement('input');
+  inputPassword.placeholder = '******';
+  inputPassword.type = 'password';
+  inputPassword.id = 'password';
+  const buttonLogin = document.createElement('button'); //boton para login
+  buttonLogin.type = 'button';
+  buttonLogin.innerText = 'Login';
+
+  //interaccion elementos bajo el login
+  const productsDiv = document.querySelector('.products');
+  console.log(productsDiv);
+
+  //add classes
+  loginSection.classList.add('flex');
+  loginSection.classList.add('closed');
+  formLogin.classList.add('flex');
+  divEmail.classList.add('flex');
+  divPassword.classList.add('flex');
+  buttonLogin.classList.add('login-button');
+
+  //pinta en HTML
+  divEmail.appendChild(labelEmail);
+  divEmail.appendChild(inputEmail);
+  divPassword.appendChild(labelPassword);
+  divPassword.appendChild(inputPassword);
+  formLogin.appendChild(divEmail);
+  formLogin.appendChild(divPassword);
+  formLogin.appendChild(buttonLogin);
+
+  loginClosed.appendChild(imgLoginClosed);
+
+  loginSection.appendChild(loginClosed);
+  loginSection.appendChild(h3Login);
+  loginSection.appendChild(formLogin);
 
   loginOpen.addEventListener('click', () => {
     loginSection.classList.remove('closed');
-    console.log('apri logiiiin');
+    productsDiv.classList.add('disable-hover');
   });
-  login.addEventListener('click', () => {
+  buttonLogin.addEventListener('click', () => {
     closeSection(loginSection);
+    productsDiv.classList.remove('disable-hover');
   });
   loginClosed.addEventListener('click', () => {
     closeSection(loginSection);
+    productsDiv.classList.remove('disable-hover');
   });
 };
 
 //funcion para esconder elementos
 const closeSection = (element) => {
   element.classList.toggle('closed');
-  console.log('cierra el login!!!');
 };
 
 //funcion para menu nav desplegable con mediaquery

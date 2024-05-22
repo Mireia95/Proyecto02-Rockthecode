@@ -144,6 +144,11 @@ main {
 }
 
 /* SECTION LOGIN */
+/* creo clase para desactivar la interaccion con los elementos debajo de la ventana de login */
+.disable-hover > article {
+  pointer-events: none;
+}
+
 #login {
   flex-direction: column;
   width: 400px;
@@ -189,8 +194,7 @@ main {
   justify-content: center;
 }
 
-#form-login > div input,
-#form-login > div select {
+#form-login > div input {
   border: 2px solid var(--WR-color-04);
   border-radius: 10px;
   padding: var(--WR-padding-10);
@@ -456,6 +460,7 @@ main {
     top: 5%;
     width: 350px;
     padding: var(--WR-padding-10);
+    z-index: 1;
   }
 
   #login > button:first-child {
