@@ -163,7 +163,8 @@ let price; /* variable para guardar el precio del filtro elejido por el user */
 
 //creo logo pagina web
 const imgLogo = document.createElement('img');
-imgLogo.src = './assets/WAVERIDE.png';
+imgLogo.src =
+  'https://res.cloudinary.com/dr2vohk2z/image/upload/v1723484044/ROCKTHECODE/Proyecto_02_Waveride/WAVERIDE_snxziu.png';
 imgLogo.alt = 'logo waveride';
 
 //*HEADER
@@ -184,7 +185,8 @@ const createHeader = (navList) => {
   nav.appendChild(ulNav);
 
   const imgLogo = document.createElement('img');
-  imgLogo.src = './assets/WAVERIDE.png';
+  imgLogo.src =
+    'https://res.cloudinary.com/dr2vohk2z/image/upload/v1723484044/ROCKTHECODE/Proyecto_02_Waveride/WAVERIDE_snxziu.png';
   imgLogo.alt = 'logo waveride';
 
   //creo button para menu desplegable en pantalla móvil
@@ -200,7 +202,8 @@ const createHeader = (navList) => {
   const divIcons = document.createElement('div');
   const divInput = document.createElement('div');
   const imgLupa = document.createElement('img');
-  imgLupa.src = './assets/lupa.png';
+  imgLupa.src =
+    'https://res.cloudinary.com/dr2vohk2z/image/upload/v1723484044/ROCKTHECODE/Proyecto_02_Waveride/lupa_xte6vk.png';
   imgLupa.alt = 'lupa';
   const inputBuscar = document.createElement('input');
   inputBuscar.type = 'text';
